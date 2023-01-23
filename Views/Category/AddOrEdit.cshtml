@@ -1,0 +1,45 @@
+﻿@model ExpenseTrackerNET7.Models.Category
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="widget p-5">
+            <form asp-action="AddOrEdit">
+                <input type="hidden" name="Id" value="@Model.Id" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group mb-3">
+                    @* The ejs-for is the syncfucion eqivalant of the asp-for attribute to include this in the actions like post *@
+                    <ejs-textbox id="Title" placeholder="Title" ejs-for="@Model.Title" floatLabelType="Auto"></ejs-textbox>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <ejs-textbox id="Icon" placeholder="Icon" ejs-for="@Model.Icon" floatLabelType="Auto"></ejs-textbox>
+                    <span asp-validation-for="Icon" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <div class='e-btn-group custom-radiobtn-group'>
+                        <input type="radio" id="RadioExpenses" name="Type" value="Expenses" checked="@(Model.Type == "Expenses")" />
+                        <label class="e-btn" for="RadioExpenses">Expenses</label>
+                        <input type="radio" id="RadioIncome" name="Type" value="Income" checked="@(Model.Type == "Income")" />
+                        <label class="e-btn" for="RadioIncome">Income</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <ejs-button id="outline" cssClass="e-success" content="Submit" type="submit"></ejs-button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-shop fa-10x"></i>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
