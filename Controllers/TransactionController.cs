@@ -23,10 +23,13 @@ namespace ExpenseTrackerNET7.Controllers
         }
 
         // GET: Transaction/AddOrEdit
-        public IActionResult AddOrEdit()
+        public IActionResult AddOrEdit(int Id = 0)
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
-            return View();
+            PopulateCategories();
+            if (Id == 0)
+                return View(new Transaction());
+            else
+                return View(_context.Transactions.Find(Id));
         }
 
         // POST: Transaction/AddOrEdit
@@ -82,6 +85,15 @@ namespace ExpenseTrackerNET7.Controllers
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        [NonAction]
+        public void PopulateCategories()
+        {
+            var CategoriesCollection = _context.Categories.ToList();
+            Category DefaultChoice = new Category() { Id = 0, Title = "Choose a Category" };
+            CategoriesCollection.Insert(0, DefaultChoice);
+            ViewBag.CategoryList = CategoriesCollection;
         }
     }
 }
