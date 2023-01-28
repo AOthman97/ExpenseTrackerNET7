@@ -15,18 +15,16 @@
                     @*<select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>*@
                     <ejs-dropdownlist id="Categories" ejs-for="CategoryId"
                     dataSource="@ViewBag.CategoryList" placeholder="Category" 
-                    floatLabelType="Always">
+                    floatLabelType="Always" allowFiltering="true">
                     <e-dropdownlist-fields value="Id" text="TitleWithIcon"></e-dropdownlist-fields>
                 </ejs-dropdownlist>
                 </div>
                 <div class="form-group mb-3">
-                    <label asp-for="Amount" class="control-label"></label>
-                    <input asp-for="Amount" class="form-control" />
+                    <ejs-numerictextbox placeholder="Amount" floatLabelType="Auto" id="Amount" value="0.00" Type="text" min="0" max="1500"></ejs-numerictextbox>
                     <span asp-validation-for="Amount" class="text-danger"></span>
                 </div>
                 <div class="form-group mb-3">
-                    <label asp-for="Note" class="control-label"></label>
-                    <input asp-for="Note" class="form-control" />
+                    <ejs-textbox id="Note" ejs-for="@Model.Note" placeholder="Note" floatLabelType="Auto" multiline="true"></ejs-textbox>
                     <span asp-validation-for="Note" class="text-danger"></span>
                 </div>
                 <div class="form-group mb-3">

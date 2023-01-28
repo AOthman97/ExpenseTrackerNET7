@@ -35,9 +35,15 @@ body {
     color: #fff;
 }
 
+#DefaultSidebar{
+    background-color: #12161d;
+    border-right: 1px solid rgba(75,82,85,0.30);
+    padding: 10px 20px;
+}
+
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 .e-bigger {
@@ -75,6 +81,10 @@ html {
     border-top-right-radius: 5px;
     padding: 10px;
     background-color: #222b33;
+}
+
+.MainContent {
+    margin-left: 300px;
 }
 
 /* Widget */

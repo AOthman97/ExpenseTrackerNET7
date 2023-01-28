@@ -8,6 +8,7 @@ namespace ExpenseTrackerNET7.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required(ErrorMessage = "Title is Required!")]
         public string Title { get; set; } = string.Empty;
         public string Icon { get; set; } = string.Empty;
         public string Type { get; set; } = "Expense";
